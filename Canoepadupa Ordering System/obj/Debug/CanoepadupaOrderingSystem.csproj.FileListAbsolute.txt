@@ -1,0 +1,9 @@
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.CustomersForm.resources
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\Canoepadupa_Ordering_System.Properties.Resources.resources
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.csproj.GenerateResource.cache
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\Canoepadupa Ordering System.exe
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\Canoepadupa Ordering System.pdb
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\bin\Debug\Canoepadupa Ordering System.exe.config
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\bin\Debug\Canoepadupa Ordering System.exe
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\bin\Debug\Canoepadupa Ordering System.pdb
+C:\Users\HEIW1\iCloudDrive\Henry's Stuff\Uni Stuff_\Object Oriented Programming\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.csprojAssemblyReference.cache
