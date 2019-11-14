@@ -7,32 +7,91 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CanoepadupaOrderingSystem.Models;
+using CanoepadupaOrderingSystem.Constants;
+using CanoepadupaOrderingSystem.Controllers;
+using CanoepadupaOrderingSystem.Forms;
 
 namespace CanoepadupaOrderingSystem
 {
-    public partial class CustomersForm : Form
+    public partial class CustomerForm : Form
     {
-        public CustomersForm()
+        private CustomerFormController customerformController = new CustomerFormController();
+
+        public static Customer Customer { get; private set; }
+
+        public CustomerForm()
         {
             InitializeComponent();
-            this.SetUpForm();
+            SetUpForm();
+            customerformController.AddCustomersToListView(ref lsvCustomerList);
         }
 
         private void SetUpForm()
         {
-            this.Text = Constants.CustomersFormConstants.FormText;
-            this.FormTitle.Text = Constants.CustomersFormConstants.FormTitle;
-            this.ListViewTitle.Text = Constants.CustomersFormConstants.ListViewTitle;
-            this.TextField1.Text = Constants.CustomersFormConstants.TextField1;
-            this.TextField2.Text = Constants.CustomersFormConstants.TextField2;
-            this.TextField3.Text = Constants.CustomersFormConstants.TextField3;
-            this.TextField4.Text = Constants.CustomersFormConstants.TextField4;
-            this.TextField5.Text = Constants.CustomersFormConstants.TextField5;
-            this.TextField6.Text = Constants.CustomersFormConstants.TextField6;
-            this.TextField7.Text = Constants.CustomersFormConstants.TextField7;
-            this.TextField8.Text = Constants.CustomersFormConstants.TextField8;
-            this.TextField9.Text = Constants.CustomersFormConstants.TextField9;
+            SetUpFormText();
+            ResizeListViewColumns();
+            ToggleButtons(false);
         }
 
+        private void SetUpFormText()
+        {
+            this.Text = CustomersFormConstants.FormText;
+            lblFormTitle.Text = CustomersFormConstants.FormTitle;
+            lblListViewTitle.Text = CustomersFormConstants.ListViewTitle;
+            lblCutomerNumber.Text = CustomersFormConstants.CustomerNumber;
+            lblCustomerName.Text = CustomersFormConstants.CustomerName;
+            lblAddress.Text = CustomersFormConstants.Address;
+            lblPostcode.Text = CustomersFormConstants.Postcode;
+            lblPhoneNumber.Text = CustomersFormConstants.Phonenumber;
+            lblEmailAddress.Text = CustomersFormConstants.EmailAddress;
+            lblCustomerDiscount.Text = CustomersFormConstants.CustomerDiscount;
+            lblSecurityQuestion.Text = CustomersFormConstants.SecurityQuestion;
+            lblSecurityQuestionAnswer.Text = CustomersFormConstants.SecurityQuestionAnswer;
+        }
+
+        private void ResizeListViewColumns()
+        {
+            lsvCustomerList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lsvCustomerList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void ToggleButtons(bool enabled)
+        {
+            btnOrderHistory.Enabled = enabled;
+            btnTakeOrder.Enabled = enabled;
+        }
+
+        private void TakeOrderButton_Click(object sender, EventArgs e)
+        {
+            if (Customer != null)
+            {
+                (new OrderBasketForm()).Show();
+                Hide();
+            }
+        }
+
+        private void lsvCustomerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(lsvCustomerList.SelectedItems.Count > 0)) { return; }
+            ToggleButtons(true);
+            Customer = customerformController.GetCustomer(int.Parse(lsvCustomerList.SelectedItems[0].Text));
+            updateCustomerInfomationFields();
+        }
+
+        private void updateCustomerInfomationFields()
+        {
+            lblCustomerNumberValue.Text = Customer.CustomerNumber.ToString();
+            lblCustomerNameValue.Text = Customer.CustomerName;
+            lblAddressLine1Value.Text = Customer.CustomerAddressLine1;
+            lblAddressLine2Value.Text = Customer.CustomerAddressLine2;
+            lblAddressLine3Value.Text = Customer.CustomerAddressLine3;
+            lblPostCodeValue.Text = Customer.Postcode;
+            lblPhoneNumerValue.Text = Customer.Phone;
+            lblEmailAddressValue.Text = Customer.Email;
+            lblCustomerDiscountValue.Text = Customer.Discount.ToString() + "%";
+            lblSecurityQuestionValue.Text = Customer.SecurityQuestion;
+            lblSecurityQuesitonAnswerValue.Text = Customer.SecurityQuestionAnswer;
+        }
     }
 }

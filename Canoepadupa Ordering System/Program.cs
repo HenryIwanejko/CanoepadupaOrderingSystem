@@ -16,7 +16,7 @@ namespace CanoepadupaOrderingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CustomersForm());
+            Application.Run(new CustomerForm());
         }
     }
 }

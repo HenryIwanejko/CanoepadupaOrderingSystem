@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 
 namespace CanoepadupaOrderingSystem.Constants
 {
-    class CustomersFormConstants
+    public class SQLQueries
     {
-        public static String FormText = "CustomersForm";
+        public static string GET_ALL_CUSTOMERS = "SELECT * FROM Customers";
+        public static string GET_ALL_PRODUCTS = "SELECT * FROM Products";
+    }
+
+    public class CustomersFormConstants
+    {
+        public static String FormText = "Customers";
         public static String FormTitle = "Canoepadupa Ordering System";
         public static String ListViewTitle = "Customers";
-        public static String TextField1 = "Customer number:";
-        public static String TextField2 = "Customer name:";
-        public static String TextField3 = "Address:";
-        public static String TextField4 = "Postcode:";
-        public static String TextField5 = "Phonenumber:";
-        public static String TextField6 = "E-mail address:";
-        public static String TextField7 = "Customer discount:";
-        public static String TextField8 = "Security question:";
-        public static String TextField9 = "Security Answer:";
+        public static String CustomerNumber = "Customer Number:";
+        public static String CustomerName = "Customer Name:";
+        public static String Address = "Address:";
+        public static String Postcode = "Postcode:";
+        public static String Phonenumber = "Phonenumber:";
+        public static String EmailAddress = "E-mail Address:";
+        public static String CustomerDiscount = "Customer Discount:";
+        public static String SecurityQuestion = "Security Question:";
+        public static String SecurityQuestionAnswer = "Security Question Answer:";
     }
 
 }
