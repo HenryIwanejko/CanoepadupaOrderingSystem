@@ -45,6 +45,16 @@
             this.lblDescriptionValue = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lsvOrderBasket = new System.Windows.Forms.ListView();
+            this.productNumberHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.productNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantityHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rrpHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.totalHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.descriptionHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.wholesalePriceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -52,6 +62,8 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,6 +77,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnAdd, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, -1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -85,6 +98,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -331,6 +345,92 @@
             this.lblQuantity.Text = "Quantity";
             this.lblQuantity.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.AutoScroll = true;
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 93);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(633, 356);
+            this.tableLayoutPanel7.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.lsvOrderBasket);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(627, 243);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Order Basket";
+            // 
+            // lsvOrderBasket
+            // 
+            this.lsvOrderBasket.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsvOrderBasket.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.productNumberHeader,
+            this.productNameHeader,
+            this.quantityHeader,
+            this.wholesalePriceHeader,
+            this.rrpHeader,
+            this.totalHeader,
+            this.descriptionHeader});
+            this.lsvOrderBasket.FullRowSelect = true;
+            this.lsvOrderBasket.Location = new System.Drawing.Point(3, 17);
+            this.lsvOrderBasket.Name = "lsvOrderBasket";
+            this.lsvOrderBasket.Size = new System.Drawing.Size(621, 220);
+            this.lsvOrderBasket.TabIndex = 0;
+            this.lsvOrderBasket.UseCompatibleStateImageBehavior = false;
+            this.lsvOrderBasket.View = System.Windows.Forms.View.Details;
+            // 
+            // productNumberHeader
+            // 
+            this.productNumberHeader.Text = "Product Number";
+            this.productNumberHeader.Width = 89;
+            // 
+            // productNameHeader
+            // 
+            this.productNameHeader.Text = "Product Name";
+            this.productNameHeader.Width = 93;
+            // 
+            // quantityHeader
+            // 
+            this.quantityHeader.Text = "Quantity";
+            this.quantityHeader.Width = 54;
+            // 
+            // rrpHeader
+            // 
+            this.rrpHeader.Text = "RRP";
+            // 
+            // totalHeader
+            // 
+            this.totalHeader.Text = "Total";
+            this.totalHeader.Width = 85;
+            // 
+            // descriptionHeader
+            // 
+            this.descriptionHeader.Text = "Description";
+            this.descriptionHeader.Width = 159;
+            // 
+            // wholesalePriceHeader
+            // 
+            this.wholesalePriceHeader.Text = "Wholesale Price";
+            this.wholesalePriceHeader.Width = 79;
+            // 
             // OrderBasketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +450,9 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +477,15 @@
         private System.Windows.Forms.NumericUpDown nudQuantity;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.ComboBox cmbProductNameValue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView lsvOrderBasket;
+        private System.Windows.Forms.ColumnHeader productNumberHeader;
+        private System.Windows.Forms.ColumnHeader productNameHeader;
+        private System.Windows.Forms.ColumnHeader quantityHeader;
+        private System.Windows.Forms.ColumnHeader rrpHeader;
+        private System.Windows.Forms.ColumnHeader totalHeader;
+        private System.Windows.Forms.ColumnHeader descriptionHeader;
+        private System.Windows.Forms.ColumnHeader wholesalePriceHeader;
     }
 }

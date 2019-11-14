@@ -46,5 +46,10 @@ namespace CanoepadupaOrderingSystem.Forms
                 DisplayProductInfomation(product);
             }
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
