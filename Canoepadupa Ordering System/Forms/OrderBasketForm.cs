@@ -14,9 +14,11 @@ namespace CanoepadupaOrderingSystem.Forms
 {
     public partial class OrderBasketForm : Form
     {
-        private Customer customer = CustomerForm.Customer;
+        private readonly Customer customer = CustomerForm.Customer;
 
-        private OrderBasketController orderBasketController = new OrderBasketController();
+        private readonly OrderBasketFormController orderBasketController = new OrderBasketFormController();
+
+        private readonly OrderBasket orderBasket = new OrderBasket();
 
         public OrderBasketForm()
         {
@@ -49,7 +51,55 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            AddProductToBasket();
+            PopulateListView();
+        }
 
+        private void AddProductToBasket()
+        {
+            ProductItem productItem = (ProductItem)cmbProductNameValue.SelectedItem;
+            BasketItem basketItem = orderBasket.CheckIfBasketAlreadyContainsProduct(productItem.ID);
+            if (basketItem != null)
+            {
+                basketItem.IncreaseQuantity(int.Parse(nudQuantity.Value.ToString()));
+            }
+            else
+            {
+                AddNewBasketItem(productItem.ID);
+            }
+        }
+
+        private void AddNewBasketItem(int productNumber)
+        {
+            Product product = orderBasketController.GetProduct(productNumber);
+            BasketItem newBasketItem = new BasketItem(
+                product.ProductNumber,
+                product.ProductName,
+                product.WholesalePrice,
+                product.RecommondedRetailPrice,
+                int.Parse(nudQuantity.Value.ToString()),
+                product.Description
+            );
+            orderBasket.AddItem(newBasketItem);
+        }
+
+
+        private void PopulateListView()
+        {
+            lsvOrderBasket.Items.Clear();
+            foreach (BasketItem basketItem in orderBasket.BasketItems)
+            {
+                ListViewItem listViewItem = new ListViewItem(new string[] {
+                        basketItem.ProductNumber.ToString(),
+                        basketItem.ProductName.ToString(),
+                        basketItem.Quantity.ToString(),
+                        basketItem.WholesalePrice.ToString("C2"),
+                        basketItem.RecommendRetailPrice.ToString("C2"),
+                        basketItem.TotalValueOfBasketItem.ToString("C2"),
+                        basketItem.Description.ToString()
+                    });
+                lsvOrderBasket.Items.Add(listViewItem);
+            }
         }
     }
 }

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 namespace CanoepadupaOrderingSystem.Controllers
 {
 
-    class OrderBasketController
+    class OrderBasketFormController
     {
         public static List<Product> listOfProducts = new List<Product>();
 
-        public OrderBasketController()
+        public OrderBasketFormController()
         {
             listOfProducts = DatabaseService.getAllProducts();
         }

@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Constants\AppConstants.cs" />
     <Compile Include="Controllers\CustomerFormController.cs" />
-    <Compile Include="Controllers\OrderBasketController.cs" />
+    <Compile Include="Controllers\OrderBasketFormController.cs" />
     <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>

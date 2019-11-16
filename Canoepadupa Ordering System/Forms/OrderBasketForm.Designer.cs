@@ -51,10 +51,10 @@
             this.productNumberHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.productNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.quantityHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.wholesalePriceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rrpHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.totalHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.descriptionHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.wholesalePriceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -412,6 +412,11 @@
             this.quantityHeader.Text = "Quantity";
             this.quantityHeader.Width = 54;
             // 
+            // wholesalePriceHeader
+            // 
+            this.wholesalePriceHeader.Text = "Wholesale Price";
+            this.wholesalePriceHeader.Width = 79;
+            // 
             // rrpHeader
             // 
             this.rrpHeader.Text = "RRP";
@@ -425,11 +430,6 @@
             // 
             this.descriptionHeader.Text = "Description";
             this.descriptionHeader.Width = 159;
-            // 
-            // wholesalePriceHeader
-            // 
-            this.wholesalePriceHeader.Text = "Wholesale Price";
-            this.wholesalePriceHeader.Width = 79;
             // 
             // OrderBasketForm
             // 
