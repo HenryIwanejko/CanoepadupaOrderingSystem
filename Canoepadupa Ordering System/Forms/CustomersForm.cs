@@ -66,7 +66,9 @@ namespace CanoepadupaOrderingSystem
         {
             if (Customer != null)
             {
-                (new OrderBasketForm()).Show();
+                var orderBasketForm = new OrderBasketForm();
+                orderBasketForm.Closed += (s, args) => this.Close();
+                orderBasketForm.Show();
                 Hide();
             }
         }

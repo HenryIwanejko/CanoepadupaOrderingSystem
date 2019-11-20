@@ -23,7 +23,21 @@ namespace CanoepadupaOrderingSystem.Models
             BasketItems.Add(basketItem);
         }
 
+        public void RemoveItem(int productNumber)
+        {
+            BasketItem basketItem = GetBasketItem(productNumber);
+            if (basketItem != null)
+            {
+                BasketItems.Remove(basketItem);
+            }
+        }
+
         public BasketItem CheckIfBasketAlreadyContainsProduct(int productNumber)
+        {
+            return GetBasketItem(productNumber);
+        }
+
+        private BasketItem GetBasketItem(int productNumber)
         {
             foreach (BasketItem basketItem in BasketItems)
             {
@@ -33,6 +47,16 @@ namespace CanoepadupaOrderingSystem.Models
                 }
             }
             return null;
+        }
+
+        public void ClearBasket()
+        {
+            BasketItems.Clear();
+        }
+
+        public bool IsBasketEmpty()
+        {
+            return BasketItems.Count == 0;
         }
 
         private int GetNumberOfItems()

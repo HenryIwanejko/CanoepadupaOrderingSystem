@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Controllers;
 using CanoepadupaOrderingSystem.Models;
@@ -30,6 +23,8 @@ namespace CanoepadupaOrderingSystem.Forms
         {
             orderBasketController.PopulateProductList(ref cmbProductNameValue);
             this.Text = orderBasketController.GetFormText(customer);
+            btnRemoveItem.Enabled = false;
+            btnClearBasket.Enabled = false;
         }
         
         private void DisplayProductInfomation(Product product)
@@ -100,6 +95,58 @@ namespace CanoepadupaOrderingSystem.Forms
                     });
                 lsvOrderBasket.Items.Add(listViewItem);
             }
+
+            bool clearButtonStatus = !orderBasket.IsBasketEmpty();
+            btnClearBasket.Enabled = clearButtonStatus;
+        }
+
+        
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            int productNumber = int.Parse(lsvOrderBasket.SelectedItems[0].Text);
+            orderBasket.RemoveItem(productNumber);
+            PopulateListView();
+            IsItemSelected();
+        }
+
+
+        private void btnClearBasket_Click(object sender, EventArgs e)
+        {
+            ClearBasket();
+        }
+
+        private void lsvOrderBasket_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IsItemSelected();
+        }
+
+        private void IsItemSelected()
+        {
+            bool buttonStatus = lsvOrderBasket.SelectedItems.Count > 0;
+            btnRemoveItem.Enabled = buttonStatus;
+        }
+
+        private void ClearBasket()
+        {
+            orderBasket.ClearBasket();
+            lsvOrderBasket.Items.Clear();
+            btnClearBasket.Enabled = false;
+            btnRemoveItem.Enabled = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearBasket();
+            var customerForm = new CustomerForm();
+            customerForm.Closed += (s, args) => this.Close();
+            customerForm.Show();
+            Hide();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
