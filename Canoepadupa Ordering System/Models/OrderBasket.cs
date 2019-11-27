@@ -8,11 +8,12 @@ namespace CanoepadupaOrderingSystem.Models
 {
     class OrderBasket
     {
+        private Customer customer = CustomerForm.Customer;
         public List<BasketItem> BasketItems { get; private set; }
         public int NumberOfProducts { get { return BasketItems.Count; } private set { } }
         public int NumberOfItems { get { return GetNumberOfItems(); } private set { } }
-        public decimal BasketTotal { get; private set; }
-        public decimal BasketDiscountedTotal { get; private set; }
+        public decimal BasketTotal { get { return GetTotalOfBasket(); } private set { } }
+        public decimal BasketDiscountedTotal { get { return BasketTotal * (1 - (customer.Discount / 100m)); } private set { } }
         public OrderBasket()
         {
             BasketItems = new List<BasketItem>();
@@ -67,6 +68,16 @@ namespace CanoepadupaOrderingSystem.Models
                 numberOfItems += basketItem.Quantity;
             }
             return numberOfItems;
+        }
+
+        private decimal GetTotalOfBasket()
+        {
+            decimal total = 0;
+            foreach (BasketItem basketItem in BasketItems)
+            {
+                total += basketItem.TotalValueOfBasketItem;
+            }
+            return total;
         }
     }
 }

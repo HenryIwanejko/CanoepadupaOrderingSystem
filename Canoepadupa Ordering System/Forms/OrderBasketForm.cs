@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Controllers;
 using CanoepadupaOrderingSystem.Models;
+using CanoepadupaOrderingSystem.Services;
 
 namespace CanoepadupaOrderingSystem.Forms
 {
@@ -25,6 +26,7 @@ namespace CanoepadupaOrderingSystem.Forms
             this.Text = orderBasketController.GetFormText(customer);
             btnRemoveItem.Enabled = false;
             btnClearBasket.Enabled = false;
+            btnCheckOut.Enabled = false;
         }
         
         private void DisplayProductInfomation(Product product)
@@ -78,7 +80,6 @@ namespace CanoepadupaOrderingSystem.Forms
             orderBasket.AddItem(newBasketItem);
         }
 
-
         private void PopulateListView()
         {
             lsvOrderBasket.Items.Clear();
@@ -96,11 +97,11 @@ namespace CanoepadupaOrderingSystem.Forms
                 lsvOrderBasket.Items.Add(listViewItem);
             }
 
-            bool clearButtonStatus = !orderBasket.IsBasketEmpty();
-            btnClearBasket.Enabled = clearButtonStatus;
+            bool ButtonStatus = !orderBasket.IsBasketEmpty();
+            btnClearBasket.Enabled = ButtonStatus;
+            btnCheckOut.Enabled = ButtonStatus;
+            UpdateBasketDetails();
         }
-
-        
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
@@ -133,6 +134,8 @@ namespace CanoepadupaOrderingSystem.Forms
             lsvOrderBasket.Items.Clear();
             btnClearBasket.Enabled = false;
             btnRemoveItem.Enabled = false;
+            btnCheckOut.Enabled = false;
+            UpdateBasketDetails();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -147,6 +150,30 @@ namespace CanoepadupaOrderingSystem.Forms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void UpdateBasketDetails()
+        {
+            lblNumberOfItemsValue.Text = orderBasket.NumberOfItems.ToString();
+            lblNumberOfProductsValue.Text = orderBasket.NumberOfProducts.ToString();
+            lblTotalValue.Text = orderBasket.BasketTotal.ToString("C2");
+            lblTotalWithDiscountValue.Text = orderBasket.BasketDiscountedTotal.ToString("C2");
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            if (lsvOrderBasket.Items.Count > 0)
+            {
+                orderBasketController.AddToBasketToDatabase(orderBasket, customer);
+                var orderHistoryForm = new CustomerOrderHistoryForm();
+                orderHistoryForm.Closed += (s, args) => this.Close();
+                orderHistoryForm.Show();
+                Hide();
+            } 
+            else
+            {
+                MessageBox.Show("Transaction can't complete. No items in Basket");
+            }
         }
     }
 }

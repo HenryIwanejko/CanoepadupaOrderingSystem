@@ -58,7 +58,14 @@
   <ItemGroup>
     <Compile Include="Constants\AppConstants.cs" />
     <Compile Include="Controllers\CustomerFormController.cs" />
+    <Compile Include="Controllers\CustomerOrderHistoryFormController.cs" />
     <Compile Include="Controllers\OrderBasketFormController.cs" />
+    <Compile Include="Forms\CustomerOrderHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerOrderHistoryForm.Designer.cs">
+      <DependentUpon>CustomerOrderHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,12 +80,17 @@
     </Compile>
     <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderBasket.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DatabaseService.cs" />
+    <EmbeddedResource Include="Forms\CustomerOrderHistoryForm.resx">
+      <DependentUpon>CustomerOrderHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomersForm.resx">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </EmbeddedResource>

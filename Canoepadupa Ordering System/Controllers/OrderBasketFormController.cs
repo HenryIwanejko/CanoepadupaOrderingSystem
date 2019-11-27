@@ -48,5 +48,33 @@ namespace CanoepadupaOrderingSystem.Controllers
         {
             return "Current Customer: " + customer.CustomerName + ", Discount: " + customer.Discount + "%";
         }
+
+        public void AddToBasketToDatabase(OrderBasket orderBasket, Customer customer)
+        {
+            int orderNumber = DatabaseService.GetNextOrderNumber();
+            Order order = new Order(
+                orderNumber,
+                customer.CustomerNumber,
+                customer.Discount,
+                DateTime.Now,
+                orderBasket.BasketTotal
+                );
+            AddOrderToDatabase(order);
+            AddOrderItemsToDatabase(orderBasket, order);
+        }
+
+        private void AddOrderToDatabase(Order order)
+        {
+            DatabaseService.AddOrder(order);
+        }
+
+        private void AddOrderItemsToDatabase(OrderBasket orderBasket, Order order)
+        {
+            foreach (BasketItem basketItem in orderBasket.BasketItems)
+            {
+                OrderItem orderItem = new OrderItem(order.OrderNumber, basketItem.ProductNumber, basketItem.WholesalePrice, basketItem.Quantity);
+                DatabaseService.AddOrderItem(orderItem);
+            }
+        }
     }
 }

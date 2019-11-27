@@ -524,6 +524,7 @@
             this.btnOrderHistory.TabIndex = 0;
             this.btnOrderHistory.Text = "View Order History";
             this.btnOrderHistory.UseVisualStyleBackColor = true;
+            this.btnOrderHistory.Click += new System.EventHandler(this.btnOrderHistory_Click);
             // 
             // btnTakeOrder
             // 

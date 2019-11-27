@@ -10,6 +10,11 @@ namespace CanoepadupaOrderingSystem.Constants
     {
         public static string GET_ALL_CUSTOMERS = "SELECT * FROM Customers";
         public static string GET_ALL_PRODUCTS = "SELECT * FROM Products";
+        public static string GET_ORDERS_FOR_CUSTOMER = "SELECT * FROM Orders WHERE CustomerNumber = ";
+        public static string GET_ORDER_ITEMS_FOR_ORDER = "SELECT * FROM OrderItems WHERE OrderNumber = ";
+        public static string ADD_ORDER = "INSERT INTO Orders(CustomerNumber, CustomerDiscount, OrderDate, OrderTotal, OrderStatus) VALUES ";
+        public static string ADD_ORDER_ITEM = "INSERT INTO OrderItems(OrderNumber, ProductNumber, PurchasePrice, Quantity) VALUES ";
+        public static string GET_MAX_ORDER_NUMBER = "SELECT max(OrderNumber) as 'OrderNumber' FROM Orders";
     }
 
     public class CustomersFormConstants

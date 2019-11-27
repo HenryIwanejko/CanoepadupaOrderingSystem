@@ -57,6 +57,14 @@
             this.descriptionHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNumberOfProducts = new System.Windows.Forms.Label();
+            this.lblNumberOfItems = new System.Windows.Forms.Label();
+            this.lblNumberOfItemsValue = new System.Windows.Forms.Label();
+            this.lblNumberOfProductsValue = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblTotalValue = new System.Windows.Forms.Label();
+            this.lblTotalWithDiscount = new System.Windows.Forms.Label();
+            this.lblTotalWithDiscountValue = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,6 +84,7 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -466,21 +475,137 @@
             // 
             // tableLayoutPanel11
             // 
+            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel11.AutoScroll = true;
             this.tableLayoutPanel11.ColumnCount = 8;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.5F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel11.Controls.Add(this.lblNumberOfProducts, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblNumberOfItems, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblNumberOfItemsValue, 3, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblNumberOfProductsValue, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblTotal, 4, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblTotalValue, 5, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblTotalWithDiscount, 6, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblTotalWithDiscountValue, 7, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(7, 20);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(617, 21);
             this.tableLayoutPanel11.TabIndex = 0;
+            // 
+            // lblNumberOfProducts
+            // 
+            this.lblNumberOfProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumberOfProducts.AutoSize = true;
+            this.lblNumberOfProducts.Location = new System.Drawing.Point(3, 0);
+            this.lblNumberOfProducts.Name = "lblNumberOfProducts";
+            this.lblNumberOfProducts.Size = new System.Drawing.Size(86, 21);
+            this.lblNumberOfProducts.TabIndex = 0;
+            this.lblNumberOfProducts.Text = "No. Products:";
+            this.lblNumberOfProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNumberOfItems
+            // 
+            this.lblNumberOfItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumberOfItems.AutoSize = true;
+            this.lblNumberOfItems.Location = new System.Drawing.Point(156, 0);
+            this.lblNumberOfItems.Name = "lblNumberOfItems";
+            this.lblNumberOfItems.Size = new System.Drawing.Size(55, 21);
+            this.lblNumberOfItems.TabIndex = 2;
+            this.lblNumberOfItems.Text = "No. Items:";
+            this.lblNumberOfItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNumberOfItemsValue
+            // 
+            this.lblNumberOfItemsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumberOfItemsValue.AutoSize = true;
+            this.lblNumberOfItemsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNumberOfItemsValue.Location = new System.Drawing.Point(217, 0);
+            this.lblNumberOfItemsValue.Name = "lblNumberOfItemsValue";
+            this.lblNumberOfItemsValue.Size = new System.Drawing.Size(55, 21);
+            this.lblNumberOfItemsValue.TabIndex = 3;
+            this.lblNumberOfItemsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNumberOfProductsValue
+            // 
+            this.lblNumberOfProductsValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumberOfProductsValue.AutoSize = true;
+            this.lblNumberOfProductsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNumberOfProductsValue.Location = new System.Drawing.Point(95, 0);
+            this.lblNumberOfProductsValue.Name = "lblNumberOfProductsValue";
+            this.lblNumberOfProductsValue.Size = new System.Drawing.Size(55, 21);
+            this.lblNumberOfProductsValue.TabIndex = 1;
+            this.lblNumberOfProductsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(278, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(71, 21);
+            this.lblTotal.TabIndex = 4;
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTotalValue
+            // 
+            this.lblTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalValue.AutoSize = true;
+            this.lblTotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTotalValue.Location = new System.Drawing.Point(355, 0);
+            this.lblTotalValue.Name = "lblTotalValue";
+            this.lblTotalValue.Size = new System.Drawing.Size(71, 21);
+            this.lblTotalValue.TabIndex = 5;
+            this.lblTotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTotalWithDiscount
+            // 
+            this.lblTotalWithDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalWithDiscount.AutoSize = true;
+            this.lblTotalWithDiscount.Location = new System.Drawing.Point(432, 0);
+            this.lblTotalWithDiscount.Name = "lblTotalWithDiscount";
+            this.lblTotalWithDiscount.Size = new System.Drawing.Size(101, 21);
+            this.lblTotalWithDiscount.TabIndex = 6;
+            this.lblTotalWithDiscount.Text = "Total w/ Discount:";
+            this.lblTotalWithDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTotalWithDiscountValue
+            // 
+            this.lblTotalWithDiscountValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalWithDiscountValue.AutoSize = true;
+            this.lblTotalWithDiscountValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTotalWithDiscountValue.Location = new System.Drawing.Point(539, 0);
+            this.lblTotalWithDiscountValue.Name = "lblTotalWithDiscountValue";
+            this.lblTotalWithDiscountValue.Size = new System.Drawing.Size(75, 21);
+            this.lblTotalWithDiscountValue.TabIndex = 7;
+            this.lblTotalWithDiscountValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel8
             // 
@@ -575,6 +700,7 @@
             this.btnCheckOut.TabIndex = 2;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // tableLayoutPanel10
             // 
@@ -646,6 +772,8 @@
             this.tableLayoutPanel7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -698,5 +826,13 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label lblNumberOfProducts;
+        private System.Windows.Forms.Label lblNumberOfItems;
+        private System.Windows.Forms.Label lblNumberOfProductsValue;
+        private System.Windows.Forms.Label lblNumberOfItemsValue;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblTotalValue;
+        private System.Windows.Forms.Label lblTotalWithDiscount;
+        private System.Windows.Forms.Label lblTotalWithDiscountValue;
     }
 }

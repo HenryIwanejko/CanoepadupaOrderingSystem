@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Models;
 using CanoepadupaOrderingSystem.Constants;
@@ -94,6 +87,17 @@ namespace CanoepadupaOrderingSystem
             lblCustomerDiscountValue.Text = Customer.Discount.ToString() + "%";
             lblSecurityQuestionValue.Text = Customer.SecurityQuestion;
             lblSecurityQuesitonAnswerValue.Text = Customer.SecurityQuestionAnswer;
+        }
+
+        private void btnOrderHistory_Click(object sender, EventArgs e)
+        {
+            if (Customer != null)
+            {
+                var customerOrderHistoryForm = new CustomerOrderHistoryForm();
+                customerOrderHistoryForm.Closed += (s, args) => this.Close();
+                customerOrderHistoryForm.Show();
+                Hide();
+            }
         }
     }
 }
