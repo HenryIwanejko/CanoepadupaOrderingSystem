@@ -12,11 +12,11 @@ namespace CanoepadupaOrderingSystem.Controllers
 
     class OrderBasketFormController
     {
-        public static List<Product> listOfProducts = new List<Product>();
+        private static List<Product> listOfProducts = new List<Product>();
 
         public OrderBasketFormController()
         {
-            listOfProducts = DatabaseService.getAllProducts();
+            listOfProducts = DatabaseService.GetAllProducts();
         }
 
         public void PopulateProductList(ref ComboBox comboBox)
@@ -76,5 +76,6 @@ namespace CanoepadupaOrderingSystem.Controllers
                 DatabaseService.AddOrderItem(orderItem);
             }
         }
+
     }
 }

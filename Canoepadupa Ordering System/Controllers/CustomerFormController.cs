@@ -11,29 +11,16 @@ namespace CanoepadupaOrderingSystem.Controllers
 {
     public class CustomerFormController
     {
-        public static List<Customer> listOfCustomers = new List<Customer>();
+        public readonly List<Customer> listOfAllCustomers = new List<Customer>();
 
         public CustomerFormController()
         {
-            RetrieveCustomers();
-        }
-
-        private void RetrieveCustomers()
-        {
-            listOfCustomers = DatabaseService.getAllCustomers();
-        }
-
-        public void AddCustomersToListView(ref ListView listView)
-        {
-            foreach (var customer in listOfCustomers)
-            {
-                listView.Items.Add(new ListViewItem(new string[] { customer.CustomerNumber.ToString(), customer.CustomerName }));
-            }
+            listOfAllCustomers = DatabaseService.GetAllCustomers();
         }
 
         public Customer GetCustomer(int customerNumber)
         {
-            foreach(var customer in listOfCustomers)
+            foreach(var customer in listOfAllCustomers)
             {
                 if (customer.CustomerNumber == customerNumber)
                 {
@@ -43,6 +30,20 @@ namespace CanoepadupaOrderingSystem.Controllers
             return null;
         }
 
+        public List<Customer> SearchForCustomer(string searchText)
+        {
+            List<Customer> searchedListOfCustomers = new List<Customer>();
+
+            foreach (Customer customer in listOfAllCustomers)
+            {
+                if (customer.CustomerName.ToLower().Contains(searchText.ToLower()))
+                {
+                    searchedListOfCustomers.Add(customer);
+                }
+            }
+
+            return searchedListOfCustomers;
+        }
 
     }
 }

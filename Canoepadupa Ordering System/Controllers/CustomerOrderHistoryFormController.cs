@@ -17,7 +17,7 @@ namespace CanoepadupaOrderingSystem.Controllers
 
         public string GetFormText(Customer customer)
         {
-            return "Current Customer: " + customer.CustomerName + ", Discount: " + customer.Discount;
+            return "Current Customer: " + customer.CustomerName + ", Discount: " + customer.Discount + "%";
         }
 
         public Order GetOrder(int orderNumber, List<Order> orders)

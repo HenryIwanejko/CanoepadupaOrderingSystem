@@ -4,12 +4,14 @@ using CanoepadupaOrderingSystem.Models;
 using CanoepadupaOrderingSystem.Constants;
 using CanoepadupaOrderingSystem.Controllers;
 using CanoepadupaOrderingSystem.Forms;
+using CanoepadupaOrderingSystem.Segues;
+using System.Collections.Generic;
 
 namespace CanoepadupaOrderingSystem
 {
     public partial class CustomerForm : Form
     {
-        private CustomerFormController customerformController = new CustomerFormController();
+        private readonly CustomerFormController customerformController = new CustomerFormController();
 
         public static Customer Customer { get; private set; }
 
@@ -17,7 +19,7 @@ namespace CanoepadupaOrderingSystem
         {
             InitializeComponent();
             SetUpForm();
-            customerformController.AddCustomersToListView(ref lsvCustomerList);
+            PopulateCustomerListView(customerformController.listOfAllCustomers);
         }
 
         private void SetUpForm()
@@ -25,6 +27,15 @@ namespace CanoepadupaOrderingSystem
             SetUpFormText();
             ResizeListViewColumns();
             ToggleButtons(false);
+        }
+
+        private void PopulateCustomerListView(List<Customer> listOfCustomers)
+        {
+            lsvCustomerList.Items.Clear();
+            foreach (var customer in listOfCustomers)
+            {
+                lsvCustomerList.Items.Add(new ListViewItem(new string[] { customer.CustomerNumber.ToString(), customer.CustomerName }));
+            }
         }
 
         private void SetUpFormText()
@@ -59,10 +70,7 @@ namespace CanoepadupaOrderingSystem
         {
             if (Customer != null)
             {
-                var orderBasketForm = new OrderBasketForm();
-                orderBasketForm.Closed += (s, args) => this.Close();
-                orderBasketForm.Show();
-                Hide();
+                AppSegues.SegueToOrderBasketForm(this);
             }
         }
 
@@ -93,11 +101,19 @@ namespace CanoepadupaOrderingSystem
         {
             if (Customer != null)
             {
-                var customerOrderHistoryForm = new CustomerOrderHistoryForm();
-                customerOrderHistoryForm.Closed += (s, args) => this.Close();
-                customerOrderHistoryForm.Show();
-                Hide();
+                AppSegues.SegueToOrderHistoryCustomer(this);
             }
+        }
+
+        private void tbxSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            List<Customer> searchedForCustomers = customerformController.SearchForCustomer(tbxSearchBox.Text);
+            PopulateCustomerListView(searchedForCustomers);
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            AppSegues.SegueToAddCustomerForm(this);
         }
     }
 }

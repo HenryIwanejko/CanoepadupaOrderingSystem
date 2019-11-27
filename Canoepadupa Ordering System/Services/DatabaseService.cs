@@ -19,12 +19,12 @@ namespace CanoepadupaOrderingSystem.Services
             return new SqlConnection(connectionString);
         }
 
-        public static List<Customer> getAllCustomers()
+        public static List<Customer> GetAllCustomers()
         {
+            string query = SQLQueries.GET_ALL_CUSTOMERS;
             using (SqlConnection connection = createSQLConnection())
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = SQLQueries.GET_ALL_CUSTOMERS;
-                SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -51,12 +51,12 @@ namespace CanoepadupaOrderingSystem.Services
             }
         }
 
-        public static List<Product> getAllProducts()
+        public static List<Product> GetAllProducts()
         {
+            string query = SQLQueries.GET_ALL_PRODUCTS;
             using (SqlConnection connection = createSQLConnection())
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = SQLQueries.GET_ALL_PRODUCTS;
-                SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -79,10 +79,10 @@ namespace CanoepadupaOrderingSystem.Services
 
         public static List<Order> GetAllOrdersForCustomer(Customer customer)
         {
+            string query = SQLQueries.GET_ORDERS_FOR_CUSTOMER + customer.CustomerNumber.ToString();
             using (SqlConnection connection = createSQLConnection())
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = SQLQueries.GET_ORDERS_FOR_CUSTOMER + customer.CustomerNumber.ToString();
-                SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -107,10 +107,10 @@ namespace CanoepadupaOrderingSystem.Services
 
         public static List<OrderItem> GetAllOrderItemsForOrder(Order order)
         {
+            string query = SQLQueries.GET_ORDER_ITEMS_FOR_ORDER + order.OrderNumber.ToString();
             using (SqlConnection connection = createSQLConnection())
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                string query = SQLQueries.GET_ORDER_ITEMS_FOR_ORDER + order.OrderNumber.ToString();
-                SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
                 SqlDataReader dataReader = command.ExecuteReader();
 
@@ -128,7 +128,6 @@ namespace CanoepadupaOrderingSystem.Services
                     listOfOrderItems.Add(orderItem);
                 }
                 return listOfOrderItems;
-
             }
         }
 
@@ -180,6 +179,28 @@ namespace CanoepadupaOrderingSystem.Services
                     orderNumber = dataReader["OrderNumber"].ToString();
                 }
                 return int.Parse(orderNumber) + 1;
+            }
+        }
+
+        public static void AddCustomer(Customer customer)
+        {
+            string query = SQLQueries.ADD_CUSTOMER + String.Format("('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, '{8}', '{9}')",
+                        customer.CustomerName,
+                        customer.CustomerAddressLine1,
+                        customer.CustomerAddressLine2,
+                        customer.CustomerAddressLine3,
+                        customer.Postcode,
+                        customer.Phone,
+                        customer.Email,
+                        customer.Discount,
+                        customer.SecurityQuestion,
+                        customer.SecurityQuestionAnswer
+                    );
+            using (SqlConnection connection = createSQLConnection())
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
             }
         }
     }

@@ -15,6 +15,8 @@ namespace CanoepadupaOrderingSystem.Constants
         public static string ADD_ORDER = "INSERT INTO Orders(CustomerNumber, CustomerDiscount, OrderDate, OrderTotal, OrderStatus) VALUES ";
         public static string ADD_ORDER_ITEM = "INSERT INTO OrderItems(OrderNumber, ProductNumber, PurchasePrice, Quantity) VALUES ";
         public static string GET_MAX_ORDER_NUMBER = "SELECT max(OrderNumber) as 'OrderNumber' FROM Orders";
+        public static string GET_MAX_CUSTOMER_NUMBER = "SELECT max(CustomerNumber) as 'CustomerNumber' FROM Customers";
+        public static string ADD_CUSTOMER = "INSERT INTO Customers(CustomerName, AddressLine1, AddressLine2, AddressLine3, Postcode, Phone, Email, Discount, SecurityQuestion, SecurityQuestionAnswer) VALUES ";
     }
 
     public class CustomersFormConstants

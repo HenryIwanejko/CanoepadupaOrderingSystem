@@ -113,7 +113,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "OrderDate";
-            this.columnHeader2.Width = 110;
+            this.columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 

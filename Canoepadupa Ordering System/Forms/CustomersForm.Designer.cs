@@ -31,10 +31,14 @@
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblListViewTitle = new System.Windows.Forms.Label();
             this.lsvCustomerList = new System.Windows.Forms.ListView();
             this.customerNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.customerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbxSearchBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblListViewTitle = new System.Windows.Forms.Label();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSecurityQuestionAnswer = new System.Windows.Forms.Label();
@@ -64,6 +68,8 @@
             this.lblCustomerDetails = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -114,29 +120,17 @@
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.lblListViewTitle, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lsvCustomerList, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 49);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(422, 416);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // lblListViewTitle
-            // 
-            this.lblListViewTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblListViewTitle.AutoSize = true;
-            this.lblListViewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListViewTitle.Location = new System.Drawing.Point(3, 0);
-            this.lblListViewTitle.Name = "lblListViewTitle";
-            this.lblListViewTitle.Size = new System.Drawing.Size(416, 41);
-            this.lblListViewTitle.TabIndex = 0;
-            this.lblListViewTitle.Text = "Customers";
-            this.lblListViewTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lsvCustomerList
             // 
@@ -151,7 +145,7 @@
             this.lsvCustomerList.Location = new System.Drawing.Point(6, 44);
             this.lsvCustomerList.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.lsvCustomerList.Name = "lsvCustomerList";
-            this.lsvCustomerList.Size = new System.Drawing.Size(413, 369);
+            this.lsvCustomerList.Size = new System.Drawing.Size(413, 326);
             this.lsvCustomerList.TabIndex = 1;
             this.lsvCustomerList.UseCompatibleStateImageBehavior = false;
             this.lsvCustomerList.View = System.Windows.Forms.View.Details;
@@ -166,6 +160,77 @@
             // 
             this.customerName.Text = "Customer name";
             this.customerName.Width = 180;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.tbxSearchBox);
+            this.groupBox1.Location = new System.Drawing.Point(3, 376);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(416, 37);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // tbxSearchBox
+            // 
+            this.tbxSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbxSearchBox.Location = new System.Drawing.Point(3, 14);
+            this.tbxSearchBox.Name = "tbxSearchBox";
+            this.tbxSearchBox.Size = new System.Drawing.Size(409, 20);
+            this.tbxSearchBox.TabIndex = 0;
+            this.tbxSearchBox.TextChanged += new System.EventHandler(this.tbxSearchBox_TextChanged);
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.AutoSize = true;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.Controls.Add(this.lblListViewTitle, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnAddCustomer, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(416, 35);
+            this.tableLayoutPanel7.TabIndex = 3;
+            // 
+            // lblListViewTitle
+            // 
+            this.lblListViewTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblListViewTitle.AutoSize = true;
+            this.lblListViewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListViewTitle.Location = new System.Drawing.Point(3, 0);
+            this.lblListViewTitle.Name = "lblListViewTitle";
+            this.lblListViewTitle.Size = new System.Drawing.Size(285, 35);
+            this.lblListViewTitle.TabIndex = 1;
+            this.lblListViewTitle.Text = "Customers";
+            this.lblListViewTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCustomer.AutoSize = true;
+            this.btnAddCustomer.Location = new System.Drawing.Point(294, 3);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(119, 29);
+            this.btnAddCustomer.TabIndex = 2;
+            this.btnAddCustomer.Text = "Add Customer";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -565,6 +630,10 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -582,7 +651,6 @@
         private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label lblListViewTitle;
         private System.Windows.Forms.ListView lsvCustomerList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -613,6 +681,11 @@
         private System.Windows.Forms.Label lblSecurityQuestionValue;
         private System.Windows.Forms.Label lblSecurityQuesitonAnswerValue;
         private System.Windows.Forms.Label lblCustomerDetails;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbxSearchBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Label lblListViewTitle;
+        private System.Windows.Forms.Button btnAddCustomer;
     }
 }
 

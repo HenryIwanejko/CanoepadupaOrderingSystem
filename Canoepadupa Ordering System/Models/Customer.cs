@@ -20,6 +20,7 @@ namespace CanoepadupaOrderingSystem.Models
         public string SecurityQuestion { get; private set; }
         public string SecurityQuestionAnswer { get; private set; }
 
+        // Used to retrieve customer to map to model
         public Customer(int customerNumber,
                         string customerName,
                         string customerAddressLine1,
@@ -34,6 +35,32 @@ namespace CanoepadupaOrderingSystem.Models
                         )
         {
             CustomerNumber = customerNumber;
+            CustomerName = customerName;
+            CustomerAddressLine1 = customerAddressLine1;
+            CustomerAddressLine2 = customerAddressLine2;
+            CustomerAddressLine3 = customerAddressLine3;
+            Postcode = postcode;
+            Phone = phone;
+            Email = email;
+            Discount = discount;
+            SecurityQuestion = sercurityQuestion;
+            SecurityQuestionAnswer = securityQuestionAnswer;
+        }
+
+        public Customer(
+                        string customerName,
+                        string customerAddressLine1,
+                        string customerAddressLine2,
+                        string customerAddressLine3,
+                        string postcode,
+                        string phone,
+                        string email,
+                        int discount,
+                        string sercurityQuestion,
+                        string securityQuestionAnswer
+                        )
+        {
+            CustomerNumber = 0;
             CustomerName = customerName;
             CustomerAddressLine1 = customerAddressLine1;
             CustomerAddressLine2 = customerAddressLine2;

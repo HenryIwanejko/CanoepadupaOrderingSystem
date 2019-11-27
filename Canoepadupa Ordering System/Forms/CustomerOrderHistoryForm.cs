@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Models;
 using CanoepadupaOrderingSystem.Services;
 using CanoepadupaOrderingSystem.Controllers;
+using CanoepadupaOrderingSystem.Segues;
 
 namespace CanoepadupaOrderingSystem.Forms
 {
@@ -27,6 +22,7 @@ namespace CanoepadupaOrderingSystem.Forms
             SetUpForm();
         }
 
+        // On initialization set form up to add customers to listview
         private void SetUpForm()
         {
             this.Text = customerOrderHistoryFormController.GetFormText(customer);
@@ -34,25 +30,28 @@ namespace CanoepadupaOrderingSystem.Forms
             PopulateOrdersListView();
         }
 
+        // Resize Columns to fit listview width
         private void ResizeListViewColumns()
         {
             lsvOrderList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lsvOrderList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            lsvOrderDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lsvOrderDetails.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        // Cancel Button Pressed Return to Customer Form
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            var customerForm = new CustomerForm();
-            customerForm.Closed += (s, args) => this.Close();
-            customerForm.Show();
-            Hide();
+            AppSegues.SegueToCustomerForm(this);
         }
 
+        // Exit Button Press Close Program
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        // On Item Selected, Update the orderList listview
         private void lsvOrderList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!(lsvOrderList.SelectedItems.Count > 0)) { return; }
@@ -61,6 +60,7 @@ namespace CanoepadupaOrderingSystem.Forms
             PopulateOrderDetailsListView(order);
         }
 
+        // Retrive Orders from database and add to the Orders list view
         private void PopulateOrdersListView()
         {
             listOfOrders = DatabaseService.GetAllOrdersForCustomer(customer);
@@ -70,6 +70,7 @@ namespace CanoepadupaOrderingSystem.Forms
             }
         }
 
+        // Add Order to the listView to be Displayed
         private void AddToOrderListView(Order order)
         {
             lsvOrderList.Items.Add(new ListViewItem(new string[] {
@@ -81,6 +82,7 @@ namespace CanoepadupaOrderingSystem.Forms
             }));
         }
 
+        // Add Data to the Order Details Listview
         private void PopulateOrderDetailsListView(Order order)
         {
             lsvOrderDetails.Items.Clear();
@@ -91,6 +93,7 @@ namespace CanoepadupaOrderingSystem.Forms
             }
         }
 
+        // Add the orderItems to the listview
         private void AddToOrderDetailsListView(OrderItem orderItem)
         {
             lsvOrderDetails.Items.Add(new ListViewItem(new string[] {

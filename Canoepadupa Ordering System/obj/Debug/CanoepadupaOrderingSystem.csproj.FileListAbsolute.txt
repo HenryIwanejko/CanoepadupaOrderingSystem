@@ -23,3 +23,4 @@ C:\Users\HEIW1\Desktop\GIT\CanoepadupaOrderingSystem\Canoepadupa Ordering System
 C:\Users\HEIW1\Desktop\GIT\CanoepadupaOrderingSystem\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.CustomerForm.resources
 C:\Users\HEIW1\Desktop\GIT\CanoepadupaOrderingSystem\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.csprojAssemblyReference.cache
 C:\Users\HEIW1\Desktop\GIT\CanoepadupaOrderingSystem\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.Forms.CustomerOrderHistoryForm.resources
+C:\Users\HEIW1\Desktop\GIT\CanoepadupaOrderingSystem\Canoepadupa Ordering System\obj\Debug\CanoepadupaOrderingSystem.Forms.AddCustomerForm.resources

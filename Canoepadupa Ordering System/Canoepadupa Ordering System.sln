@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanoepadupaOrderingSystem", "CanoepadupaOrderingSystem.csproj", "{0092936D-D8E2-4E62-9025-9CE0AD282FED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanoepadupaOrderingSystem.Tests", "..\CanoepadupaOrderingSystemTests\CanoepadupaOrderingSystem.Tests.csproj", "{15186E51-2EFC-40BA-A666-02D668657E59}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{0092936D-D8E2-4E62-9025-9CE0AD282FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0092936D-D8E2-4E62-9025-9CE0AD282FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0092936D-D8E2-4E62-9025-9CE0AD282FED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15186E51-2EFC-40BA-A666-02D668657E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15186E51-2EFC-40BA-A666-02D668657E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15186E51-2EFC-40BA-A666-02D668657E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15186E51-2EFC-40BA-A666-02D668657E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

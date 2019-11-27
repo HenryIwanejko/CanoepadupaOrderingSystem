@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Controllers;
 using CanoepadupaOrderingSystem.Models;
-using CanoepadupaOrderingSystem.Services;
+using CanoepadupaOrderingSystem.Segues;
 
 namespace CanoepadupaOrderingSystem.Forms
 {
@@ -141,10 +141,7 @@ namespace CanoepadupaOrderingSystem.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearBasket();
-            var customerForm = new CustomerForm();
-            customerForm.Closed += (s, args) => this.Close();
-            customerForm.Show();
-            Hide();
+            AppSegues.SegueToCustomerForm(this);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -165,10 +162,7 @@ namespace CanoepadupaOrderingSystem.Forms
             if (lsvOrderBasket.Items.Count > 0)
             {
                 orderBasketController.AddToBasketToDatabase(orderBasket, customer);
-                var orderHistoryForm = new CustomerOrderHistoryForm();
-                orderHistoryForm.Closed += (s, args) => this.Close();
-                orderHistoryForm.Show();
-                Hide();
+                AppSegues.SegueToOrderHistoryCustomer(this);
             } 
             else
             {
