@@ -14,6 +14,8 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private readonly CustomerOrderHistoryFormController customerOrderHistoryFormController = new CustomerOrderHistoryFormController();
 
+        private readonly OrderBasketFormController orderBasketFormController = new OrderBasketFormController();
+
         private List<Order> listOfOrders = new List<Order>();
 
         public CustomerOrderHistoryForm()
@@ -76,7 +78,7 @@ namespace CanoepadupaOrderingSystem.Forms
             lsvOrderList.Items.Add(new ListViewItem(new string[] {
                 order.OrderNumber.ToString(),
                 order.OrderDate.ToString("dd MMMM yyyy"),
-                order.ConvertOrderStatus(order.OrderStatus).ToString(),
+                order.ConvertOrderStatus(),
                 order.OrderTotal.ToString("C2"),
                 order.DiscountedOrderTotal.ToString("C2")
             }));
@@ -88,19 +90,23 @@ namespace CanoepadupaOrderingSystem.Forms
             lsvOrderDetails.Items.Clear();
             List<OrderItem> listOfOrderItems = DatabaseService.GetAllOrderItemsForOrder(order);
             foreach (OrderItem orderItem in listOfOrderItems)
-            {
-                AddToOrderDetailsListView(orderItem);
+            { 
+                Product product = orderBasketFormController.GetProduct(orderItem.ProductNumber);
+                AddToOrderDetailsListView(orderItem, product);
             }
         }
 
         // Add the orderItems to the listview
-        private void AddToOrderDetailsListView(OrderItem orderItem)
+        private void AddToOrderDetailsListView(OrderItem orderItem, Product product)
         {
             lsvOrderDetails.Items.Add(new ListViewItem(new string[] {
                 orderItem.OrderNumber.ToString(),
+                product.ProductName,
                 orderItem.ProductNumber.ToString(),
                 orderItem.Quantity.ToString(),
-                orderItem.PurchasePrice.ToString("C2")
+                product.WholesalePrice.ToString("C2"),
+                orderItem.PurchasePrice.ToString("C2"),
+                (orderItem.Quantity * product.WholesalePrice * (1 - (customer.Discount / 100m))).ToString("C2")
             }));
         }
     }

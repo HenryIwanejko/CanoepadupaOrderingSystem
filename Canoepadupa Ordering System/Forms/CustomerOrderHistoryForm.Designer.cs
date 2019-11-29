@@ -39,9 +39,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lsvOrderDetails = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -151,11 +154,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsvOrderDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
+            this.columnHeader10,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader11,
+            this.columnHeader9,
+            this.columnHeader12});
             this.lsvOrderDetails.FullRowSelect = true;
-            this.lsvOrderDetails.Location = new System.Drawing.Point(7, 20);
+            this.lsvOrderDetails.Location = new System.Drawing.Point(6, 19);
             this.lsvOrderDetails.Name = "lsvOrderDetails";
             this.lsvOrderDetails.Size = new System.Drawing.Size(776, 164);
             this.lsvOrderDetails.TabIndex = 0;
@@ -165,22 +171,37 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Order Number";
-            this.columnHeader6.Width = 125;
+            this.columnHeader6.Width = 78;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Product Name";
+            this.columnHeader10.Width = 97;
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "ProductNumber";
-            this.columnHeader7.Width = 145;
+            this.columnHeader7.Text = "Product Number";
+            this.columnHeader7.Width = 94;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Quantity";
-            this.columnHeader8.Width = 155;
+            this.columnHeader8.Width = 128;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Wholesale Price";
+            this.columnHeader11.Width = 111;
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "Purchase Price";
-            this.columnHeader9.Width = 346;
+            this.columnHeader9.Width = 127;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Total Item Value";
+            this.columnHeader12.Width = 128;
             // 
             // tableLayoutPanel2
             // 
@@ -267,5 +288,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }

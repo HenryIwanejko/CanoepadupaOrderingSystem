@@ -47,6 +47,7 @@ namespace CanoepadupaOrderingSystem.Models
             SecurityQuestionAnswer = securityQuestionAnswer;
         }
 
+        // Used to Add to Database 
         public Customer(
                         string customerName,
                         string customerAddressLine1,

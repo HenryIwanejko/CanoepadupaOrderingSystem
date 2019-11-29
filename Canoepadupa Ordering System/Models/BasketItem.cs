@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CanoepadupaOrderingSystem.Models
 {
-    class BasketItem
+    public class BasketItem
     {
         public int ProductNumber { get; private set; }
         public string ProductName { get; private set; }

@@ -38,9 +38,9 @@ namespace CanoepadupaOrderingSystem.Models
             OrderStatus = 1;
         }
 
-        public string ConvertOrderStatus(int status)
+        public string ConvertOrderStatus()
         { 
-            switch (status)
+            switch (OrderStatus)
             {
                 case 1:
                     return "Taken";
