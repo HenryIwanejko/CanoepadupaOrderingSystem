@@ -12,7 +12,7 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private readonly OrderBasketFormController orderBasketController = new OrderBasketFormController();
 
-        private readonly OrderBasket orderBasket = new OrderBasket();
+        private readonly OrderBasket orderBasket = new OrderBasket(CustomerForm.Customer);
 
         public OrderBasketForm()
         {

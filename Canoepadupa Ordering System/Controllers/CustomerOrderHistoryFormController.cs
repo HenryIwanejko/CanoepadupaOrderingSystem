@@ -8,7 +8,7 @@ using CanoepadupaOrderingSystem.Forms;
 
 namespace CanoepadupaOrderingSystem.Controllers
 {
-    class CustomerOrderHistoryFormController
+    public class CustomerOrderHistoryFormController
     {
         public CustomerOrderHistoryFormController()
         {

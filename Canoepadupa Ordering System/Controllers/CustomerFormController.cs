@@ -11,16 +11,16 @@ namespace CanoepadupaOrderingSystem.Controllers
 {
     public class CustomerFormController
     {
-        public readonly List<Customer> listOfAllCustomers = new List<Customer>();
+        public readonly List<Customer> ListOfAllCustomers = new List<Customer>();
 
-        public CustomerFormController()
+        public CustomerFormController(List<Customer> listOfCustomers = null)
         {
-            listOfAllCustomers = DatabaseService.GetAllCustomers();
+            ListOfAllCustomers = listOfCustomers ?? DatabaseService.GetAllCustomers();
         }
 
         public Customer GetCustomer(int customerNumber)
         {
-            foreach(var customer in listOfAllCustomers)
+            foreach(var customer in ListOfAllCustomers)
             {
                 if (customer.CustomerNumber == customerNumber)
                 {
@@ -34,7 +34,7 @@ namespace CanoepadupaOrderingSystem.Controllers
         {
             List<Customer> searchedListOfCustomers = new List<Customer>();
 
-            foreach (Customer customer in listOfAllCustomers)
+            foreach (Customer customer in ListOfAllCustomers)
             {
                 if (customer.CustomerName.ToLower().Contains(searchText.ToLower()))
                 {

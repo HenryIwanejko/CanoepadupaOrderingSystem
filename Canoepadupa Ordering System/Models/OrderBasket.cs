@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace CanoepadupaOrderingSystem.Models
 {
-    class OrderBasket
+    public class OrderBasket
     {
-        private readonly Customer customer = CustomerForm.Customer;
+        private readonly Customer Customer;
         public List<BasketItem> BasketItems { get; private set; }
         public int NumberOfProducts { get { return BasketItems.Count; } private set { } }
         public int NumberOfItems { get { return GetNumberOfItems(); } private set { } }
         public decimal BasketTotal { get { return GetTotalOfBasket(); } private set { } }
-        public decimal BasketDiscountedTotal { get { return BasketTotal * (1 - (customer.Discount / 100m    )); } private set { } }
-        public OrderBasket()
+        public decimal BasketDiscountedTotal { get { return BasketTotal * (1 - (Customer.Discount / 100m)); } private set { } }
+        public OrderBasket(Customer customer)
         {
+            Customer = customer;
             BasketItems = new List<BasketItem>();
         }
 

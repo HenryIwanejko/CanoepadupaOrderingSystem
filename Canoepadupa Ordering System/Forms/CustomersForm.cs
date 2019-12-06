@@ -19,7 +19,8 @@ namespace CanoepadupaOrderingSystem
         {
             InitializeComponent();
             SetUpForm();
-            PopulateCustomerListView(customerformController.listOfAllCustomers);
+            List<Customer> listOfCustomers = customerformController.ListOfAllCustomers;
+            PopulateCustomerListView(listOfCustomers);
         }
 
         private void SetUpForm()
