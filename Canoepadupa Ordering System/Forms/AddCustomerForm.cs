@@ -13,6 +13,7 @@ using CanoepadupaOrderingSystem.Segues;
 using CanoepadupaOrderingSystem.Services;
 using CanoepadupaOrderingSystem.Models;
 using CanoepadupaOrderingSystem.Controllers;
+using CanoepadupaOrderingSystem.Exceptions;
 
 namespace CanoepadupaOrderingSystem.Forms
 {
@@ -44,8 +45,16 @@ namespace CanoepadupaOrderingSystem.Forms
                         tbxSecurityQuestionValue.Text,
                         tbxSecurityAnswerValue.Text
                     );
-                addCustomerFormController.AddCustomer(newCustomer);
-                AppSegues.SegueToCustomerForm(this);
+                try
+                {
+                    addCustomerFormController.AddCustomer(newCustomer);
+                    AppSegues.SegueToCustomerForm(this);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Util.GetExceptionMessage(ex));
+                }
+                
             }
             else
             {

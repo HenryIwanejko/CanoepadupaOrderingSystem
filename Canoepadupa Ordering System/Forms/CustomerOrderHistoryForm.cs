@@ -56,19 +56,33 @@ namespace CanoepadupaOrderingSystem.Forms
         // On Item Selected, Update the orderList listview
         private void lsvOrderList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!(lsvOrderList.SelectedItems.Count > 0)) { return; }
-            int orderNumber = int.Parse(lsvOrderList.SelectedItems[0].Text);
-            Order order = customerOrderHistoryFormController.GetOrder(orderNumber, listOfOrders) ;
-            PopulateOrderDetailsListView(order);
+            try
+            {
+                if (!(lsvOrderList.SelectedItems.Count > 0)) { return; }
+                int orderNumber = int.Parse(lsvOrderList.SelectedItems[0].Text);
+                Order order = customerOrderHistoryFormController.GetOrder(orderNumber, listOfOrders);
+                PopulateOrderDetailsListView(order);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Util.GetExceptionMessage(ex));
+            }
         }
 
         // Retrive Orders from database and add to the Orders list view
         private void PopulateOrdersListView()
         {
-            listOfOrders = DatabaseService.GetAllOrdersForCustomer(customer);
-            foreach (Order order in listOfOrders)
+            try
             {
-                AddToOrderListView(order);
+                listOfOrders = DatabaseService.GetAllOrdersForCustomer(customer);
+                foreach (Order order in listOfOrders)
+                {
+                    AddToOrderListView(order);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Util.GetExceptionMessage(ex));
             }
         }
 
@@ -87,12 +101,19 @@ namespace CanoepadupaOrderingSystem.Forms
         // Add Data to the Order Details Listview
         private void PopulateOrderDetailsListView(Order order)
         {
-            lsvOrderDetails.Items.Clear();
-            List<OrderItem> listOfOrderItems = DatabaseService.GetAllOrderItemsForOrder(order);
-            foreach (OrderItem orderItem in listOfOrderItems)
-            { 
-                Product product = orderBasketFormController.GetProduct(orderItem.ProductNumber);
-                AddToOrderDetailsListView(orderItem, product);
+            try
+            {
+                lsvOrderDetails.Items.Clear();
+                List<OrderItem> listOfOrderItems = DatabaseService.GetAllOrderItemsForOrder(order);
+                foreach (OrderItem orderItem in listOfOrderItems)
+                {
+                    Product product = orderBasketFormController.GetProduct(orderItem.ProductNumber);
+                    AddToOrderDetailsListView(orderItem, product);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Util.GetExceptionMessage(ex));
             }
         }
 

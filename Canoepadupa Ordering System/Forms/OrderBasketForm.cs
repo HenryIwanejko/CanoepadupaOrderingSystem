@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using CanoepadupaOrderingSystem.Controllers;
 using CanoepadupaOrderingSystem.Models;
 using CanoepadupaOrderingSystem.Segues;
+using CanoepadupaOrderingSystem.Services;
 
 namespace CanoepadupaOrderingSystem.Forms
 {
@@ -22,11 +23,18 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private void SetUpForm()
         {
-            orderBasketController.PopulateProductList(ref cmbProductNameValue);
-            this.Text = orderBasketController.GetFormText(customer);
-            btnRemoveItem.Enabled = false;
-            btnClearBasket.Enabled = false;
-            btnCheckOut.Enabled = false;
+            try
+            {
+                orderBasketController.PopulateProductList(ref cmbProductNameValue);
+                this.Text = orderBasketController.GetFormText(customer);
+                btnRemoveItem.Enabled = false;
+                btnClearBasket.Enabled = false;
+                btnCheckOut.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Util.GetExceptionMessage(ex));
+            }
         }
         
         private void DisplayProductInfomation(Product product)
@@ -54,30 +62,44 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private void AddProductToBasket()
         {
-            ProductItem productItem = (ProductItem)cmbProductNameValue.SelectedItem;
-            BasketItem basketItem = orderBasket.CheckIfBasketAlreadyContainsProduct(productItem.ID);
-            if (basketItem != null)
+            try
             {
-                basketItem.IncreaseQuantity(int.Parse(nudQuantity.Value.ToString()));
-            }
-            else
+                ProductItem productItem = (ProductItem)cmbProductNameValue.SelectedItem;
+                BasketItem basketItem = orderBasket.CheckIfBasketAlreadyContainsProduct(productItem.ID);
+                if (basketItem != null)
+                {
+                    basketItem.IncreaseQuantity(int.Parse(nudQuantity.Value.ToString()));
+                }
+                else
+                {
+                    AddNewBasketItem(productItem.ID);
+                }
+            } 
+            catch (Exception ex)
             {
-                AddNewBasketItem(productItem.ID);
+                MessageBox.Show(Util.GetExceptionMessage(ex));
             }
         }
 
         private void AddNewBasketItem(int productNumber)
         {
-            Product product = orderBasketController.GetProduct(productNumber);
-            BasketItem newBasketItem = new BasketItem(
-                product.ProductNumber,
-                product.ProductName,
-                product.WholesalePrice,
-                product.RecommondedRetailPrice,
-                int.Parse(nudQuantity.Value.ToString()),
-                product.Description
-            );
-            orderBasket.AddItem(newBasketItem);
+            try
+            {
+                Product product = orderBasketController.GetProduct(productNumber);
+                BasketItem newBasketItem = new BasketItem(
+                    product.ProductNumber,
+                    product.ProductName,
+                    product.WholesalePrice,
+                    product.RecommondedRetailPrice,
+                    int.Parse(nudQuantity.Value.ToString()),
+                    product.Description
+                );
+                orderBasket.AddItem(newBasketItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Util.GetExceptionMessage(ex));
+            }
         }
 
         private void PopulateListView()
@@ -159,14 +181,21 @@ namespace CanoepadupaOrderingSystem.Forms
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            if (lsvOrderBasket.Items.Count > 0)
+            try
             {
-                orderBasketController.AddToBasketToDatabase(orderBasket, customer);
-                AppSegues.SegueToOrderHistoryCustomer(this);
-            } 
-            else
+                if (lsvOrderBasket.Items.Count > 0)
+                {
+                    orderBasketController.AddToBasketToDatabase(orderBasket, customer);
+                    AppSegues.SegueToOrderHistoryCustomer(this);
+                } 
+                else
+                {
+                    MessageBox.Show("Transaction can't complete. No items in Basket");
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Transaction can't complete. No items in Basket");
+                MessageBox.Show(Util.GetExceptionMessage(ex));
             }
         }
     }
