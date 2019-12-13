@@ -16,7 +16,16 @@ namespace CanoepadupaOrderingSystem.Controllers
 
         public OrderBasketFormController(List<Product> listOfProducts = null)
         {
-            ListOfProducts = listOfProducts ?? DatabaseService.GetAllProducts();
+            try
+            {
+                ListOfProducts = listOfProducts ?? DatabaseService.GetAllProducts();
+            }
+            catch (Exception ex)
+            {
+                // Pass Exception to UI
+                throw ex;
+            }
+            
         }
 
         public void PopulateProductList(ref ComboBox comboBox)

@@ -12,7 +12,7 @@ namespace CanoepadupaOrderingSystem
 {
     public partial class CustomerForm : Form
     {
-        private readonly CustomerFormController customerformController = new CustomerFormController();
+        private CustomerFormController customerFormController;
 
         public static Customer Customer { get; private set; }
 
@@ -20,14 +20,13 @@ namespace CanoepadupaOrderingSystem
         {
             InitializeComponent();
             SetUpForm();
-            PopulateCustomerListView(GetAllCustomers()); ;
         }
 
         private List<Customer> GetAllCustomers()
         {
             try
             {
-                List<Customer> listOfCustomers = customerformController.ListOfAllCustomers;
+                List<Customer> listOfCustomers = customerFormController.ListOfAllCustomers;
                 return listOfCustomers;
             }
             catch (Exception ex)
@@ -42,6 +41,15 @@ namespace CanoepadupaOrderingSystem
             SetUpFormText();
             ResizeListViewColumns();
             ToggleButtons(false);
+            try
+            {
+                customerFormController = new CustomerFormController();
+                PopulateCustomerListView(GetAllCustomers());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void PopulateCustomerListView(List<Customer> listOfCustomers)
@@ -95,7 +103,7 @@ namespace CanoepadupaOrderingSystem
             {
                 if (!(lsvCustomerList.SelectedItems.Count > 0)) { return; }
                 ToggleButtons(true);
-                Customer = customerformController.GetCustomer(int.Parse(lsvCustomerList.SelectedItems[0].Text));
+                Customer = customerFormController.GetCustomer(int.Parse(lsvCustomerList.SelectedItems[0].Text));
                 updateCustomerInfomationFields();
             }
             catch (Exception ex)
@@ -131,13 +139,14 @@ namespace CanoepadupaOrderingSystem
         {
             try 
             {
-                List<Customer> searchedForCustomers = customerformController.SearchForCustomer(tbxSearchBox.Text);
+                List<Customer> searchedForCustomers = customerFormController.SearchForCustomer(tbxSearchBox.Text);
                 PopulateCustomerListView(searchedForCustomers);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(Util.GetExceptionMessage(ex));
             }
+            new CustomerFormController();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)

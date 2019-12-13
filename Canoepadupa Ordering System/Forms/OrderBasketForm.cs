@@ -11,7 +11,7 @@ namespace CanoepadupaOrderingSystem.Forms
     {
         private readonly Customer customer = CustomerForm.Customer;
 
-        private readonly OrderBasketFormController orderBasketController = new OrderBasketFormController();
+        private OrderBasketFormController orderBasketController;
 
         private readonly OrderBasket orderBasket = new OrderBasket(CustomerForm.Customer);
 
@@ -25,6 +25,7 @@ namespace CanoepadupaOrderingSystem.Forms
         {
             try
             {
+                orderBasketController = new OrderBasketFormController();
                 orderBasketController.PopulateProductList(ref cmbProductNameValue);
                 this.Text = orderBasketController.GetFormText(customer);
                 btnRemoveItem.Enabled = false;

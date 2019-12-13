@@ -15,7 +15,15 @@ namespace CanoepadupaOrderingSystem.Controllers
 
         public CustomerFormController(List<Customer> listOfCustomers = null)
         {
-            ListOfAllCustomers = listOfCustomers ?? DatabaseService.GetAllCustomers();
+            try
+            {
+                ListOfAllCustomers = listOfCustomers ?? DatabaseService.GetAllCustomers();
+            }
+            catch (Exception ex)
+            {
+                // Pass exception to UI
+                throw ex;
+            }
         }
 
         public Customer GetCustomer(int customerNumber)
